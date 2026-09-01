@@ -76,6 +76,11 @@ install(FILES
 )
 install(DIRECTORY etc/plugins DESTINATION etc)
 
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/.rootrc.in"
+               "${CMAKE_CURRENT_BINARY_DIR}/.rootrc" @ONLY)
+
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/.rootrc" DESTINATION etc)
+
 option(RUCIO_ROOT_BUILD_TESTS "Build unit tests" ON)
 if(RUCIO_ROOT_BUILD_TESTS)
   enable_testing()
